@@ -2,6 +2,7 @@ import { useForm } from '@tanstack/react-form';
 import { useNavigate } from '@tanstack/react-router';
 import { toast } from 'sonner';
 import z from 'zod';
+
 import { authClient } from '@/lib/auth-client';
 import Loader from './loader';
 import { Button } from './ui/button';
@@ -13,10 +14,10 @@ export default function SignInForm({
 }: {
   onSwitchToSignUp: () => void;
 }) {
+  const { isPending } = authClient.useSession();
   const navigate = useNavigate({
     from: '/',
   });
-  const { isPending } = authClient.useSession();
 
   const form = useForm({
     defaultValues: {
@@ -32,7 +33,7 @@ export default function SignInForm({
         {
           onSuccess: () => {
             navigate({
-              to: '/dashboard',
+              to: '/',
             });
             toast.success('Sign in successful');
           },
@@ -119,7 +120,7 @@ export default function SignInForm({
               disabled={!state.canSubmit || state.isSubmitting}
               type="submit"
             >
-              {state.isSubmitting ? 'Submitting...' : 'Sign In'}
+              {state.isSubmitting ? 'Signing In...' : 'Sign In'}
             </Button>
           )}
         </form.Subscribe>

@@ -50,3 +50,10 @@ lerna-debug.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+*.rdb
+dump.rdb
+*.aof
+appendonly*.aof
+redis-data/

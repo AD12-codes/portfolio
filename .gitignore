@@ -1,2 +1,8 @@
 node_modules
 .turbo
+
+*.rdb
+dump.rdb
+*.aof
+appendonly*.aof
+redis-data/
