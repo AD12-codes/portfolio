@@ -9,7 +9,7 @@ export const Route = createFileRoute('/')({
 
 function HomeComponent() {
   const { isPending, data: session } = authClient.useSession();
-  console.log('session', session);
+
   return (
     <div className="container mx-auto max-w-3xl px-4 py-2">
       {isPending && <Loader />}
